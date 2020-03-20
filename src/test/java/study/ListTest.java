@@ -1,11 +1,7 @@
 package study;
 
-import org.assertj.core.api.Assertions;
-import org.assertj.core.api.iterable.Extractor;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import stringcalculator.calculator.Calculator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +15,7 @@ public class ListTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-            "+ - * / : true true true true" ,
+            "+ - * / : true true true true",
             "+ * * + : true true true true",
             "+ e * A : true false true false",
             "+ + ^ + : true true false true"
