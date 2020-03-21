@@ -11,11 +11,10 @@ public enum Calculator {
     MULTIPLICATION("*", (leftNumber, rightNumber) -> leftNumber * rightNumber),
     DIVISION("/", (leftNumber, rightNumber) -> leftNumber / rightNumber);
 
-    private String operator;
-    private BiFunction<Double, Double, Double> operation;
-
     private static Map<String, BiFunction<Double, Double, Double>> calculatorMap =
             Arrays.asList(Calculator.values()).stream().collect(Collectors.toMap(i -> i.operator, i -> i.operation));
+    private String operator;
+    private BiFunction<Double, Double, Double> operation;
 
     Calculator(String operator, BiFunction<Double, Double, Double> operation) {
         this.operator = operator;

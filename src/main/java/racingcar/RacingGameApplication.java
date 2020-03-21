@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.domain.CarPositions;
+import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
@@ -9,10 +9,12 @@ public class RacingGameApplication {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        RacingGame racingGame = new RacingGame(inputView.getTime(), inputView.getTotalCarCount());
+        Cars cars = new Cars(inputView.getCarNames());
 
-        CarPositions gameResult = racingGame.game();
-        ResultView resultView = new ResultView(gameResult.getResult());
+        RacingGame racingGame = new RacingGame(inputView.getTime(), cars);
+        racingGame.game();
+
+        ResultView resultView = new ResultView(racingGame.getResult());
         resultView.print();
     }
 

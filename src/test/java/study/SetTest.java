@@ -10,7 +10,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.assertj.core.api.AssertionsForClassTypes.*;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 
@@ -45,7 +44,7 @@ public class SetTest {
 
     @DisplayName("요구사항 3: 1,2,3은 성공, 4,5는 실패하는 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"1:true","2:true","3:true","4:false"}, delimiter = ':')
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false"}, delimiter = ':')
     public void containsTest(int no, boolean expected) {
         assertThat(numbers.contains(no)).isEqualTo(expected);
     }

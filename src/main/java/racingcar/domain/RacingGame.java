@@ -1,44 +1,26 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+public class RacingGame {
 
-public class RacingGame implements RacingGameRule {
+    private final int time;
+    private final Cars cars;
 
-    private int time;
-    private int[] carPosition;
-
-    public RacingGame(int time, int totalCarCount) {
+    public RacingGame(int time, Cars cars) {
         this.time = time;
-        this.carPosition = new int[totalCarCount];
+        this.cars = cars;
     }
 
-    public CarPositions game() {
-        List<int[]> carPositions = new ArrayList<>();
+    public void game() {
         for (int i = 0; i < time; i++) {
-            move();
-            carPositions.add(carPosition.clone());
-        }
-        return new CarPositions(carPositions);
-    }
-
-
-    private void move() {
-        for (int carNumber = 0; carNumber < carPosition.length; carNumber++) {
-            forward(carNumber);
+            cars.move();
         }
     }
 
-    private void forward(int carNumber) {
-        int condition = new Random().nextInt(RacingGameConstant.RANDOM_LIMIT);
-        if (isForward(condition)) {
-            carPosition[carNumber]++;
+    public String getResult() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < time; i++) {
+            sb.append(cars.getResult(i));
         }
-    }
-
-    @Override
-    public boolean isForward(int condition) {
-        return condition >= RacingGameConstant.APPROVE_CONDITION;
+        return sb.toString();
     }
 }

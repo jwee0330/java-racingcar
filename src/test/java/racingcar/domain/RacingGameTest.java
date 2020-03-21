@@ -14,19 +14,20 @@ class RacingGameTest {
     @ParameterizedTest
     @CsvSource(value = {"3 : 1", "3 : 3", "5 : 1", "5 : 3", "5 : 5", "5 : 10"}, delimiter = ':')
     public void init(int totalCarCount, int time) throws NoSuchFieldException, IllegalAccessException {
-        RacingGame racingCarGame = new RacingGame(time, totalCarCount); // time: 몇 번, totalCarCount: 몇 대
+        Cars cars = new Cars(new String[]{"정원", "자바", "레이서"});
+        RacingGame racingCarGame = new RacingGame(time, cars); // time: 몇 번, totalCarCount: 몇 대
 
         Field filedTime = RacingGame.class.getDeclaredField("time");
-        Field fieldCarPosition = RacingGame.class.getDeclaredField("carPosition");
+        Field fieldCars = RacingGame.class.getDeclaredField("cars");
 
         filedTime.setAccessible(true);
-        fieldCarPosition.setAccessible(true);
+        fieldCars.setAccessible(true);
 
         int existingTime = (int) filedTime.get(racingCarGame);
-        int[] existingCarPosition = (int[]) fieldCarPosition.get(racingCarGame);
+        Cars existingCars = (Cars) fieldCars.get(racingCarGame);
 
         assertThat(existingTime).isEqualTo(time);
-        assertThat(existingCarPosition).hasSize(totalCarCount);
+        assertThat(existingCars).isEqualTo(cars);
     }
 
     @DisplayName("자동차는 조건이 4 이상일 때만 전진한다.")
@@ -34,8 +35,8 @@ class RacingGameTest {
     @CsvSource(value = {"1 : false", "2 : false", "3 : false", "4 : true"}, delimiter = ':')
     void RacingCarForwardOnConditionGraterThanOrEqualForTest(int condition, boolean expected) {
 
-        FakeRacingGame fakeRacingGame = new FakeRacingGame();
-        boolean forwardCondition = fakeRacingGame.isForward(condition);
+        Car car = new Car("정원");
+        boolean forwardCondition = car.isForward(condition);
 
         assertThat(forwardCondition).isEqualTo(expected);
     }
