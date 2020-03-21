@@ -37,6 +37,18 @@ public class Car {
         return name + RacingGameConstant.COLON + positionMarker.toString();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getScore() {
+        return position.stream().mapToInt(Integer::intValue).sum();
+    }
+
+    public boolean isSamePosition(Car car) {
+        return getScore() == car.getScore();
+    }
+
     private void writePositionMarker(StringBuilder positionMarker, int i) {
         if (position.get(i) > NOT_MOVE) {
             positionMarker.append(RacingGameConstant.CAR_MARKER);

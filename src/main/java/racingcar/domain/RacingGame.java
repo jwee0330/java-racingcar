@@ -23,4 +23,8 @@ public class RacingGame {
         }
         return sb.toString();
     }
+
+    public String getWinner() {
+        return cars.getWinner();
+    }
 }

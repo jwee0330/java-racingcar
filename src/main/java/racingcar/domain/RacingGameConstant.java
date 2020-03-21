@@ -10,6 +10,7 @@ public class RacingGameConstant {
     public static final String IS_NOT_NULL = "공백은 입력할 수 없습니다.";
     public static final String IS_NOT_A_NUMBER = "숫자만 입력해 주세요.";
     public static final String IS_NOT_A_COMMA = "구분자는 쉼표(,)만 입력해 주세요.";
+    public static final String NO_WINNER = "우승자를 구할 수 없습니다.";
 
     public static final String CAR_MARKER = "-";
     public static final String CARRIAGE_RETURN = "\n";

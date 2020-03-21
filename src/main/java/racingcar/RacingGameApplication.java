@@ -14,7 +14,7 @@ public class RacingGameApplication {
         RacingGame racingGame = new RacingGame(inputView.getTime(), cars);
         racingGame.game();
 
-        ResultView resultView = new ResultView(racingGame.getResult());
+        ResultView resultView = new ResultView(racingGame.getWinner(), racingGame.getResult());
         resultView.print();
     }
 
